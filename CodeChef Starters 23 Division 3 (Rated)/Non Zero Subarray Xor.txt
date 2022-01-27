@@ -1,0 +1,65 @@
+//defining all the headder files
+#include <bits/stdc++.h>
+#define fastio ios_base::sync_with_stdio(false), cin.tie(NULL);
+#define int long long
+#define rep(i,n) for (int i=0;i<n;i++)
+#define repi(i,x,n) for (int i=x;i<n;i++)
+#define br cout<<endl
+#define vi vector<int>
+using namespace std;
+//logical code
+int dsn96(int ago, int cop){
+    for (int i=0;i<21;i++){
+    	//checking AND
+        if ((cop&(1<<i))>0)
+            ago^=(1<<i);
+    }
+    //returning ago to main function
+    return ago;
+}
+//logical code 2
+void solution(){
+ int n;
+    cin>>n;
+    vector<int> dsn;
+    //declaring a map
+    map<int,int> ind;
+    ind[0]=1;
+    int cop = 1;
+    int ago = 0;
+    for (int i=0;i<n;i++){
+        // cout<<cop<<endl;
+        while (ind[dsn96(ago,cop)]==1){
+            cop++;
+            //incrementing cop
+        }
+        ago = dsn96(ago,cop);
+        //calculating ago
+        ind[ago]=1;
+        //calculating ind
+        dsn.push_back(cop);
+        cop++;
+    }
+    
+    for (auto x:dsn) cout<<x<<" ";
+    //printing endl after dsn
+    cout<<endl;
+
+}
+//driver code
+signed main(){
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif
+    fastio
+    //including fast input and output
+    int testcase;
+    testcase = 1;
+    //No. of test cases
+    cin>>testcase;
+    while(testcase--){
+  solution();
+  //calling the solution function
+ }
+}

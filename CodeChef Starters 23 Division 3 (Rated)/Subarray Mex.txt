@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		int len,subarr,mex;
+		cin >> len >> subarr >> mex;
+		vector <int> v(len,0);
+		if(subarr>len||mex>subarr)
+			{
+				cout << -1 <<endl;
+				continue;
+			}
+			int count=0;
+		for (int i = 0; i < len; i++)
+		{
+			v[i] = count;
+			if(count==mex-1)
+				count=count-mex;
+			count++;
+		}
+		for(auto value:v)
+			cout << value <<" ";
+		cout << endl;
+	}
+}
